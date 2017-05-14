@@ -27,6 +27,7 @@
 
 .term-card {
   min-width: 270px;
+  flex: 1;
 }
 
 .md-fab {
@@ -40,6 +41,29 @@
     top: 17px;
     left: 16.5px;
   }
+}
+
+md-nav-bar {
+  div {
+    display: flex;
+  }
+
+  .md-nav-bar {
+    border-color: transparent;
+  }
+
+  .md-button.sign-out-button {
+    color: rgb(197, 202, 233);
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.error-page {
+  margin: auto;
+  text-align: center;
 }
 
 //md-toolbar.nav-bar {

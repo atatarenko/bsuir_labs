@@ -1,10 +1,13 @@
-md-toolbar.nav-bar[layout="row" md-whiteframe="2" layout-align="space-around center"]
+md-toolbar.nav-bar[layout="row" md-whiteframe="2" layout-align="space-around center" ng-controller="NavigationController as self"]
   p
     | BsuirLabs
   md-nav-bar[hide show-gt-sm md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" md-no-ink-bar="true"]
-    md-nav-item[md-nav-sref="terms" name="terms"] Terms
-    md-nav-item[md-nav-sref="signIn" name="signIn"] Sign In
-    md-nav-item[md-nav-sref="signUp" name="signUp"] Sign Up
+    div[ng-if="self.isAuthenticated()"]
+      md-nav-item[md-nav-sref="terms" name="terms"] Terms
+      md-button[class="sign-out-button" ng-click="self.signOut()"] Sign Out
+    div[ng-if="!self.isAuthenticated()"]
+      md-nav-item[md-nav-sref="signIn" name="signIn"] Sign In
+      md-nav-item[md-nav-sref="signUp" name="signUp"] Sign Up
   md-menu[hide-gt-sm style="margin: 0px;"]
     md-button.md-icon-button[ng-click="$mdMenu.open($event)"]
       md-icon

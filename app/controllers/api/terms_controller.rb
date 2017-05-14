@@ -3,7 +3,7 @@ module Api
   class TermsController < BaseController
 
     def index
-      render json: current_user.terms, status: :ok
+      render json: current_user.terms.ordered, status: :ok
     end
 
     def show
@@ -51,7 +51,7 @@ module Api
     private
 
     def prepare_params
-      params.permit(:id, :course, :number)
+      params.permit(:id, :course, :term_number)
     end
   end
 end

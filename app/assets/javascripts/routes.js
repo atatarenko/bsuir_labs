@@ -1,12 +1,6 @@
 angular.module('app').config(function ($stateProvider, $urlRouterProvider) {
     [
         {
-            name: 'home',
-            url: '/',
-            controller: 'HomeController as self',
-            templateUrl: 'home.html'
-        },
-        {
             name: 'terms',
             url: '/terms',
             controller: 'TermsController as self',
@@ -30,9 +24,13 @@ angular.module('app').config(function ($stateProvider, $urlRouterProvider) {
             controller: 'SignUpController as self',
             templateUrl: 'sign_up.html'
         },
-        { name: 'otherwise', url: '/otherwise', template: '<h1>404</h1>' }
+        {
+            name: 'not_found',
+            url: '/404',
+            templateUrl: 'errors/404.html'
+        }
     ].forEach(function(state) { $stateProvider.state(state) });
 
-    $urlRouterProvider.when('', '/');
-    $urlRouterProvider.otherwise('/otherwise');
+    $urlRouterProvider.when('', '/terms');
+    $urlRouterProvider.otherwise('/404');
 });

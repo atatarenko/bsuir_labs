@@ -5,12 +5,19 @@ angular.module('app').config(function ($httpProvider) {
         return {
             responseError: function(response) {
                 var errorMessages = [];
-                var errors = response.data.errors;
-                Object.keys(errors).forEach(function(attribute) {
-                    errors[attribute].forEach(function (errorMessage) {
-                        errorMessages.push(attribute + ': ' + errorMessage);
+
+                if (!!response.data.error) {
+                    errorMessages.push(response.data.error);
+                }
+
+                if (!!response.data.errors) {
+                    var errors = response.data.errors;
+                    Object.keys(errors).forEach(function(attribute) {
+                        errors[attribute].forEach(function (errorMessage) {
+                            errorMessages.push(attribute + ': ' + errorMessage);
+                        });
                     });
-                });
+                }
 
                 $rootScope.$broadcast('httpResponseWithError', errorMessages);
                 return $q.reject(response);

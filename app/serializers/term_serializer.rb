@@ -1,4 +1,4 @@
 # frozen_string_literal
 class TermSerializer < ActiveModel::Serializer
-  attributes :id, :course, :number
+  attributes :id, :course, :term_number
 end
