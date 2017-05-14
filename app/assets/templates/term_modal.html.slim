@@ -1,0 +1,16 @@
+md-dialog.md-dialog-modal[flex-xs="90"]
+  form[ng-cloak]
+    md-dialog-content.md-dialog-content
+      h2.md-title
+        | {{self.title}}
+      div layout="column"
+        div layout-gt-xs="row"
+          md-input-container.md-block[flex-gt-xs]
+            label Course
+            input ng-model="self.term.course"
+          md-input-container.md-block[flex-gt-xs]
+            label Term Number
+            input ng-model="self.term.number"
+    md-dialog-actions[layout="row"]
+      md-button ng-click="self.saveTerm()" Save
+      md-button ng-click="self.cancel()" Cancel

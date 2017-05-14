@@ -1,0 +1,61 @@
+@import "angular-material/angular-material.min";
+@import "angular-toast/dist/angular-toast";
+
+.term-wrapper {
+  overflow-x: auto;
+}
+
+.subject-wrapper {
+  flex: 0 0 270px;
+  margin: 0 10px;
+  background-color: rgb(250,250,250);
+  max-height: calc(85vh - 64px);
+  padding: 0;
+}
+
+.subject-name {
+  min-height: 24px;
+}
+
+.subject-actions {
+  min-height: 40px;
+}
+
+.subject-lessons {
+  padding: 0;
+}
+
+.term-card {
+  min-width: 270px;
+}
+
+.md-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+
+  i {
+    position: absolute;
+    top: 17px;
+    left: 16.5px;
+  }
+}
+
+//md-toolbar.nav-bar {
+//  background-color: #2ecc71;
+//  color: rgba(255,255,255,0.87);
+//
+//  a.md-button {
+//    color: rgba(255,255,255,0.87) !important;
+//  }
+//
+//  md-nav-bar .md-nav-bar {
+//    border-color: transparent;
+//    background-color: #16a085;
+//  }
+//}
+//
+//.states-wrapper {
+//  background-color: #2C3E50;
+//}

@@ -1,0 +1,17 @@
+md-content[flex="" layout="row" layout-align="center start" layout-padding=""]
+  md-card[style="width: 400px;"]
+    md-card-title
+      md-card-title-text
+        span.md-display-1 Sign up please
+    md-card-content[layout="column" style="margin-top: 20px;"]
+      md-input-container[style="margin: 0;"]
+        label Email
+        input[ng-model="self.email" type="email"]
+      md-input-container[style="margin: 0;"]
+        label Password
+        input[ng-model="self.password" type="password"]
+      md-input-container[style="margin: 0;"]
+        label Password Confirmation
+        input[ng-model="self.passwordConfirmation" type="password"]
+    md-card-actions[layout="row" layout-align="end center"]
+      md-button[ng-click="self.signUp()"] Sign Up

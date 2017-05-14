@@ -1,0 +1,13 @@
+md-dialog.md-dialog-modal[flex-xs="90"]
+  form[ng-cloak]
+    md-dialog-content.md-dialog-content
+      h2.md-title
+        | {{self.title}}
+      div layout="column"
+        md-input-container[flex]
+          label Name
+          input[ng-model="self.lab.name"]
+    md-dialog-actions[layout="row"]
+      md-button[ng-click="self.saveLab()"] Save
+      md-button[ng-click="self.deleteLab()" ng-if="self.updateMode"] Delete
+      md-button[ng-click="self.cancel()"] Cancel

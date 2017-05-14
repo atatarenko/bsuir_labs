@@ -1,0 +1,25 @@
+div.term-wrapper[layout="row" layout-padding flex layout-align="start start"]
+  md-card.subject-wrapper[ng-repeat="subject in self.subjects"]
+    md-card-header.subject-name
+      md-card-header-text
+        span.md-title
+          | {{subject.name}}
+    md-divider
+    md-card-content.subject-lessons[style="overflow-y: auto"]
+      md-card[ng-repeat="lab in subject.labs" ng-click="self.editLab(subject, lab)"]
+        md-card-content
+          p
+            | {{lab.name}}
+    md-divider
+    md-card-actions.subject-actions[layout="row" layout-align="end center"]
+      md-button.md-icon-button[ng-click="self.addLab(subject)"]
+        md-icon
+          i.material-icons add
+      md-button.md-icon-button[ng-click="self.editSubject(subject)"]
+        md-icon
+          i.material-icons edit
+      md-button.md-icon-button[ng-click="self.deleteSubject(subject)"]
+        md-icon
+          i.material-icons delete
+md-button.md-fab[ng-click="self.addSubject()"]
+  i.material-icons add

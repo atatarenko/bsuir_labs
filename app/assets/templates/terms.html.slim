@@ -1,0 +1,23 @@
+div[layout="row" layout-align="center"]
+  div[flex="80"]
+    h1.md-display-3 Terms
+    div[layout="row" layout-wrap]
+      md-card.term-card[ng-repeat="term in self.terms"]
+        md-card-title
+          md-card-title-text
+            span.md-headline
+              | {{term.course}} Course
+            span.md-subhead
+              | {{term.number}} Term
+        md-card-actions[layout="row" layout-align="end center"]
+          md-button.md-icon-button[ng-click="self.showTerm(term)"]
+            md-icon
+              i.material-icons poll
+          md-button.md-icon-button[ng-click="self.editTerm(term)"]
+            md-icon
+              i.material-icons edit
+          md-button.md-icon-button[ng-click="self.deleteTerm(term)"]
+            md-icon
+              i.material-icons delete
+    md-button.md-fab[ng-click="self.addTerm()"]
+      i.material-icons add
