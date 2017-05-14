@@ -7,6 +7,11 @@ md-dialog.md-dialog-modal[flex-xs="90"]
         md-input-container[flex]
           label Name
           input[ng-model="self.lab.name"]
+        md-input-container[flex ng-if="self.updateMode"]
+          label State
+          md-select[ng-model="self.lab.state"]
+            md-option[ng-repeat="state in self.states" ng-value="state"]
+              | {{self.stateMapping[state]}}
     md-dialog-actions[layout="row"]
       md-button[ng-click="self.saveLab()"] Save
       md-button[ng-click="self.deleteLab()" ng-if="self.updateMode"] Delete
