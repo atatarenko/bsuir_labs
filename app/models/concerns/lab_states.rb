@@ -12,19 +12,19 @@ module LabStates
       state :finish
 
       event :get_to_work do
-        transitions from: :any, to: :in_progress
+        transitions to: :in_progress
       end
 
       event :suspend_work do
-        transitions from: :any, to: :todo
+        transitions to: :todo
       end
 
       event :resolve do
-        transitions from: :any, to: :resolved
+        transitions to: :resolved
       end
 
       event :finish do
-        transitions from: :any, to: :done
+        transitions to: :done
       end
     end
   end
