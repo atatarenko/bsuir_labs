@@ -7,6 +7,15 @@ md-dialog.md-dialog-modal[flex-xs="90"]
         md-input-container[flex]
           label Name
           input[ng-model="self.subject.name"]
+        md-input-container
+          label Description
+          textarea.description-text[
+            ng-model="self.subject.description"
+            rows="5"
+            md-select-on-focus
+            flex-gt-xs="70vh"
+            flex-xs="100"
+          ]
     md-dialog-actions[layout="row"]
       md-button[ng-click="self.saveSubject()"] Save
       md-button[ng-click="self.cancel()"] Cancel

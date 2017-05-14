@@ -12,6 +12,22 @@ angular.module('app').controller('SubjectsController', function($mdDialog, $stat
         });
     }
 
+    self.sortOptions = function(subject) {
+
+        return {
+            accept: function (sourceItemHandleScope, destSortableScope) {
+                return sourceItemHandleScope.itemScope.sortableScope.$id === destSortableScope.$id;
+            },
+
+            orderChanged: function() {
+                for (var i = 0; i < subject.labs.length; i++) {
+                    subject.labs[i].rank = i;
+                }
+                Subject.update({ termId: self.termId }, subject).$promise.finally(refresh);
+            }
+        }
+    };
+
     self.deleteSubject = function(subject) {
         var confirm = $mdDialog.confirm()
             .title('Would you like to delete whole subject?')

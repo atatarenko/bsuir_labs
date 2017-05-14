@@ -1,5 +1,5 @@
 # frozen_string_literal
 class LabSerializer < ActiveModel::Serializer
-  attributes :id, :name, :state, :subject_id
+  attributes :id, :name, :description, :state, :subject_id, :rank
   belongs_to :subject
 end

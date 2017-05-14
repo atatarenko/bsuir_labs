@@ -5,7 +5,7 @@ div.term-wrapper[layout="row" layout-padding flex layout-align="start start"]
         span.md-title
           | {{subject.name}}
     md-divider
-    md-card-content.subject-lessons[as-sortable ng-model="subject.labs"]
+    md-card-content.subject-lessons[as-sortable="self.sortOptions(subject)" ng-model="subject.labs"]
       md-card.lab[
         class="{{self.labClasses[lab.state]}}"
         ng-repeat="lab in subject.labs"

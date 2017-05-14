@@ -51,7 +51,7 @@ module Api
     private
 
     def prepare_params
-      params.permit(:id, :name, :state)
+      params.permit(:id, :name, :state, :description)
     end
 
     def labs

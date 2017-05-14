@@ -4,4 +4,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :terms, dependent: :destroy
+
+  validates :email, presence: true, length: { maximum: 20 }
 end

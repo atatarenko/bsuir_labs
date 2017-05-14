@@ -4,14 +4,24 @@ md-dialog.md-dialog-modal[flex-xs="90"]
       h2.md-title
         | {{self.title}}
       div layout="column"
-        md-input-container[flex]
-          label Name
-          input[ng-model="self.lab.name"]
-        md-input-container[flex ng-if="self.updateMode"]
-          label State
-          md-select[ng-model="self.lab.state"]
-            md-option[ng-repeat="state in self.states" ng-value="state.name"]
-              | {{state.showText}}
+        div layout-gt-xs="row"
+          md-input-container.md-block[flex-gt-xs]
+            label Name
+            input[ng-model="self.lab.name"]
+          md-input-container.md-block[ng-if="self.updateMode"]
+            label State
+            md-select[ng-model="self.lab.state"]
+              md-option[ng-repeat="state in self.states" ng-value="state.name"]
+                | {{state.showText}}
+        md-input-container
+          label Description
+          textarea.description-text[
+            ng-model="self.lab.description"
+            rows="5"
+            md-select-on-focus
+            flex-gt-xs="70vh"
+            flex-xs="100"
+          ]
     md-dialog-actions[layout="row"]
       md-button[ng-click="self.saveLab()"] Save
       md-button[ng-click="self.deleteLab()" ng-if="self.updateMode"] Delete

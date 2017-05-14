@@ -51,7 +51,9 @@ module Api
     private
 
     def prepare_params
-      params.permit(:id, :name)
+      params.
+          merge(labs_attributes: params.delete(:labs)).
+          permit(:id, :name, :description, labs_attributes: %i[id rank])
     end
 
     def subjects

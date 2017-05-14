@@ -23,8 +23,8 @@ my_user.terms.destroy
 term = Term.create(user: my_user, course: 3, term_number: 2)
 {
   'СПП' => [
-    { name: 'Лаба 1: Тема проекта + UML', state: 'done' },
-    { name: 'Лаба 2: Каркас приложения', state: 'done' },
+    { name: 'Лаба 1: Проектирование', state: 'done' },
+    { name: 'Лаба 2: Каркас', state: 'done' },
     { name: 'Лаба 3: Работающий CRUD', state: 'done' },
     { name: 'Лаба 4: Тесты', state: 'done' },
     { name: 'Лаба 5: Вёрстка', state: 'resolved' },
