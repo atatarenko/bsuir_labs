@@ -2,12 +2,13 @@
 module Api
   class BaseController < ApplicationController
     before_action :check_authorization
+    layout false
 
     private
 
     def check_authorization
       if current_user.blank?
-        render no_content: true, status: 401
+        head status: 401
       end
     end
   end

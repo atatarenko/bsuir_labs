@@ -5,7 +5,7 @@ class Term < ApplicationRecord
 
   validates :course, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :term_number, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  validates :term_number, uniqueness: { scope: :course }
+  validates :term_number, uniqueness: { scope: %i[course user] }
 
   scope :ordered, -> { order(:course, :term_number) }
 end

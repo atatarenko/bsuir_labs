@@ -12,9 +12,8 @@ angular.module('app').controller('SignUpController', function($state, Auth) {
             password_confirmation: self.passwordConfirmation
         };
 
-        Auth.register(credentials, config).then(function(user) {
-            console.log(user);
-            $state.go('home');
+        Auth.register(credentials, config).then(function() {
+            $state.go('terms');
         });
     };
 });

@@ -6,20 +6,36 @@ div.term-wrapper[layout="row" layout-padding flex layout-align="start start"]
           | {{subject.name}}
     md-divider
     md-card-content.subject-lessons[style="overflow-y: auto"]
-      md-card[ng-repeat="lab in subject.labs" ng-click="self.editLab(subject, lab)"]
+      md-card.lab[class="{{self.labClasses[lab.state]}}" ng-repeat="lab in subject.labs" ng-click="self.editLab(subject, lab)"]
         md-card-content
           p
             | {{lab.name}}
     md-divider
     md-card-actions.subject-actions[layout="row" layout-align="end center"]
       md-button.md-icon-button[ng-click="self.addLab(subject)"]
+        md-tooltip Add new lab
         md-icon
           i.material-icons add
+      md-button.md-icon-button[ng-click="self.showStatistics(subject)"]
+        md-tooltip Show statistics for subject
+        md-icon
+          i.material-icons pie_chart
       md-button.md-icon-button[ng-click="self.editSubject(subject)"]
+        md-tooltip Edit subject
         md-icon
           i.material-icons edit
       md-button.md-icon-button[ng-click="self.deleteSubject(subject)"]
+        md-tooltip Remove subject
         md-icon
           i.material-icons delete
-md-button.md-fab[ng-click="self.addSubject()"]
-  i.material-icons add
+md-fab-speed-dial.md-fling[md-direction="up"]
+  md-fab-trigger
+    md-button.md-fab
+      i.material-icons menu
+  md-fab-actions
+    md-button.md-fab.md-mini[ng-click="self.showStatistics()"]
+      md-tooltip[md-direction="left"] Show statistics for term
+      i.material-icons pie_chart
+    md-button.md-fab.md-mini[ng-click="self.addSubject()"]
+      md-tooltip[md-direction="left"] Add new subject
+      i.material-icons add

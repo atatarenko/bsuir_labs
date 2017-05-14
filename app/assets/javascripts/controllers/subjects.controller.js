@@ -1,8 +1,16 @@
-angular.module('app').controller('SubjectsController', function($mdDialog, $stateParams, Subject, Lab) {
+angular.module('app').controller('SubjectsController', function($mdDialog, $stateParams, Subject) {
     var self = this;
 
     self.termId = $stateParams.termId;
     self.subjects = [];
+
+    refresh();
+
+    function refresh() {
+        Subject.query({ termId: self.termId }).$promise.then(function (result) {
+            self.subjects = result;
+        });
+    }
 
     self.deleteSubject = function(subject) {
         var confirm = $mdDialog.confirm()
@@ -31,13 +39,24 @@ angular.module('app').controller('SubjectsController', function($mdDialog, $stat
         openLabModal(subject);
     };
 
-    refresh();
+    self.showStatistics = function(subject) {
+        if (!!subject) {
+            openChartModal(subject.labs);
+        } else {
+            var labs = [];
+            self.subjects.forEach(function (subject) {
+                labs = labs.concat(subject.labs);
+            });
+            openChartModal(labs);
+        }
+    };
 
-    function refresh() {
-        Subject.query({ termId: self.termId }).$promise.then(function (result) {
-            self.subjects = result;
-        });
-    }
+    self.labClasses = {
+        todo: 'lab-todo',
+        in_progress: 'lab-in-progress',
+        resolved: 'lab-resolved',
+        done: 'lab-done'
+    };
 
     function openSubjectModal(subject) {
         $mdDialog.show({
@@ -64,5 +83,15 @@ angular.module('app').controller('SubjectsController', function($mdDialog, $stat
                 lab: angular.copy(lab)
             }
         }).finally(refresh);
+    }
+
+    function openChartModal(labs) {
+        $mdDialog.show({
+            controller: 'PieChartModalController as self',
+            templateUrl: 'pie_chart_modal.html',
+            parent: angular.element(document.body),
+            clickOutsideToClose: true,
+            locals: { labs: labs }
+        })
     }
 });

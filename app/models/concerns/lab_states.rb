@@ -9,7 +9,7 @@ module LabStates
       state :todo, initial: true
       state :in_progress
       state :resolved
-      state :finish
+      state :done
 
       event :get_to_work do
         transitions to: :in_progress

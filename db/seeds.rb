@@ -8,11 +8,39 @@
 
 Term.destroy_all
 5.times do |i|
-  term = Term.create(user: User.first, course: 5 - i, number: i)
+  term = Term.create(user: User.first, course: 5 - i, term_number: i)
   5.times do |j|
     subject = Subject.create(name: "Subject #{j}", term: term)
-    5.times do |k|
-      Lab.create(name: "Lab #{k}", subject: subject)
-    end
+    Lab.create(name: 'Lab 1', subject: subject, state: :done)
+    Lab.create(name: 'Lab 2', subject: subject, state: :resolved)
+    Lab.create(name: 'Lab 3', subject: subject, state: :in_progress)
+    Lab.create(name: 'Lab 4', subject: subject, state: :todo)
   end
+end
+
+my_user = User.find_by(email: 'test@mail.com')
+my_user.terms.destroy
+term = Term.create(user: my_user, course: 3, term_number: 2)
+{
+  'СПП' => [
+    { name: 'Лаба 1: Тема проекта + UML', state: 'done' },
+    { name: 'Лаба 2: Каркас приложения', state: 'done' },
+    { name: 'Лаба 3: Работающий CRUD', state: 'done' },
+    { name: 'Лаба 4: Тесты', state: 'done' },
+    { name: 'Лаба 5: Вёрстка', state: 'resolved' },
+    { name: 'Лаба 6: Документы', state: 'in_progress' },
+    { name: 'Лаба 7: Spring', state: 'todo' },
+    { name: 'Лаба 8: Angular', state: 'todo' }
+  ],
+  'Мобилки' => [
+    { name: '1 Swift', state: 'done' },
+    { name: '2 Swift', state: 'done' },
+    { name: '3 Swift', state: 'done' },
+    { name: '4 Swift', state: 'resolved' },
+    { name: 'Andoid', state: 'resolved' },
+    { name: 'Xamarin', state: 'todo' }
+  ]
+}.each do |subj_name, labs|
+  subject = Subject.create(name: subj_name, term: term)
+  labs.each { |lab| Lab.create(lab.merge(subject: subject)) }
 end

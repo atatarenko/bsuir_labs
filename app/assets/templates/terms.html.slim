@@ -11,13 +11,18 @@ div[layout="row" layout-align="center"]
               | {{term.term_number}} Term
         md-card-actions[layout="row" layout-align="end center"]
           md-button.md-icon-button[ng-click="self.showTerm(term)"]
+            md-tooltip Show term subjects
             md-icon
               i.material-icons poll
           md-button.md-icon-button[ng-click="self.editTerm(term)"]
+            md-tooltip Edit term
             md-icon
               i.material-icons edit
           md-button.md-icon-button[ng-click="self.deleteTerm(term)"]
+            md-tooltip Remove term
             md-icon
               i.material-icons delete
-    md-button.md-fab[ng-click="self.addTerm()"]
-      i.material-icons add
+
+md-button.md-fab.add-term-button[ng-click="self.addTerm()"]
+  md-tooltip[md-direction="left"] Add new term
+  i.material-icons add
