@@ -1,5 +1,6 @@
 @import "angular-material/angular-material.min";
 @import "angular-toast/dist/angular-toast";
+@import "ng-sortable/dist/ng-sortable.min";
 
 .term-wrapper {
   overflow-x: auto;
@@ -24,6 +25,7 @@
 .subject-lessons {
   padding: 0;
   min-height: 60px;
+  overflow-y: auto;
 }
 
 .term-card {
@@ -74,10 +76,16 @@ md-nav-bar {
 }
 
 md-card.lab {
+  cursor: pointer;
+
   &.lab-todo { border-left: 5px solid rgba(231, 76, 60, 1.0) }
   &.lab-in-progress { border-left: 5px solid rgba(230, 126, 34, 1.0) }
   &.lab-resolved { border-left: 5px solid rgba(52, 152, 219, 1.0) }
   &.lab-done { border-left: 5px solid rgba(46, 204, 113, 1.0) }
+}
+
+.as-sortable-drag {
+  overflow-y: hidden;
 }
 
 //md-toolbar.nav-bar {

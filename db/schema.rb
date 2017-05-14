@@ -10,18 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514125338) do
+ActiveRecord::Schema.define(version: 20170514200743) do
 
   create_table "labs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "name"
     t.integer "subject_id"
-    t.string  "state",      null: false
+    t.string  "state",                    null: false
+    t.integer "rank",        default: 0,  null: false
+    t.string  "description", default: "", null: false
     t.index ["subject_id"], name: "index_labs_on_subject_id", using: :btree
   end
 
   create_table "subjects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "name",    null: false
+    t.string  "name",                     null: false
     t.integer "term_id"
+    t.string  "description", default: "", null: false
     t.index ["term_id"], name: "index_subjects_on_term_id", using: :btree
   end
 

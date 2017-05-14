@@ -12,7 +12,7 @@
 //= require angular-toast/dist/angular-toast.min
 //= require chart.js/dist/Chart.min
 //= require angular-chart.js/dist/angular-chart.min
-//= require angular-drag-and-drop-lists/angular-drag-and-drop-lists.min
+//= require ng-sortable/dist/ng-sortable.min
 //= require angular-rails-templates
 //= require_tree ../templates
 //= require_self
@@ -29,5 +29,5 @@ angular
         'Devise',
         'angular-toast',
         'chart.js',
-        'dndLists'
+        'as.sortable'
     ]);

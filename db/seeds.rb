@@ -39,6 +39,17 @@ term = Term.create(user: my_user, course: 3, term_number: 2)
     { name: '4 Swift', state: 'resolved' },
     { name: 'Andoid', state: 'resolved' },
     { name: 'Xamarin', state: 'todo' }
+  ],
+  'МиАПР' => [
+    { name: 'K-means', state: 'done' },
+    { name: 'Maximin', state: 'done' },
+    { name: 'Clustering error', state: 'done' },
+    { name: 'Perceptron', state: 'done' },
+    { name: 'Potential Classifier', state: 'done' },
+    { name: 'Hierarchical Grouping', state: 'in_progress' },
+    { name: 'Syntactic Method', state: 'todo' },
+    { name: 'Grammar Generation', state: 'todo' },
+    { name: 'Neural Network', state: 'todo' }
   ]
 }.each do |subj_name, labs|
   subject = Subject.create(name: subj_name, term: term)
