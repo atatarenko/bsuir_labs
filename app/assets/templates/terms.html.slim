@@ -19,6 +19,7 @@ div[layout="row" layout-align="center"]
           md-button.md-icon-button[ng-click="self.deleteTerm(term)"]
             md-icon
               i.material-icons delete
+      h1.md-display-1[ng-if="self.isEmpty()"] There are no terms
 
 md-button.md-fab.add-term-button[ng-click="self.addTerm()"]
   i.material-icons add

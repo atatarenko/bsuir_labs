@@ -1,6 +1,12 @@
 md-dialog.md-dialog-modal[flex-xs="90" aria-label="chart"]
   form[ng-cloak]
     md-dialog-content.md-dialog-content
-      canvas#doughnut.chart.chart-pie[chart-data="self.data" chart-labels="self.labels" chart-colors="self.colors"]
+      canvas#doughnut.chart.chart-pie[
+        chart-data="self.data"
+        chart-labels="self.labels"
+        chart-colors="self.colors"
+        ng-hide="self.isEmpty"
+      ]
+      h2[ng-if="self.isEmpty"] There are no labs.
     md-dialog-actions[layout="row"]
       md-button[ng-click="self.cancel()"] Cancel

@@ -14,9 +14,13 @@ md-toolbar.nav-bar[layout="row" md-whiteframe="2" layout-align="space-around cen
         md-menu-origin
           i.material-icons menu
     md-menu-content[width="4"]
-      md-menu-item
-        md-button[ui-sref="terms"] Terms
-      md-menu-item
-        md-button[ui-sref="signIn"] Sign In
-      md-menu-item
-        md-button[ui-sref="signUp"] Sign Up
+      div[ng-if="self.isAuthenticated()"]
+        md-menu-item
+          md-button[ui-sref="terms"] Terms
+        md-menu-item
+          md-button[ng-click="self.signOut()"] Sign Out
+      div[ng-if="!self.isAuthenticated()"]
+        md-menu-item
+          md-button[ui-sref="signIn"] Sign In
+        md-menu-item
+          md-button[ui-sref="signUp"] Sign Up

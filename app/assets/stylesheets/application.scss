@@ -8,10 +8,12 @@
 
 .subject-wrapper {
   flex: 0 0 270px;
-  margin: 0 10px;
-  background-color: rgb(250,250,250);
-  max-height: calc(85vh - 64px);
   padding: 0;
+
+  md-card.subject-card {
+    background-color: rgb(250,250,250);
+    max-height: calc(85vh - 64px);
+  }
 }
 
 .subject-name {
@@ -62,7 +64,7 @@ md-nav-bar {
   }
 
   .md-button.sign-out-button {
-    color: rgb(197, 202, 233);
+    color: rgb(178,223,219);
 
     &:hover {
       background-color: transparent;
@@ -119,6 +121,10 @@ md-card.lab {
 //  }
 //}
 //
-//.states-wrapper {
-//  background-color: #2C3E50;
-//}
+.states-wrapper {
+  //background-color: rgba(26, 188, 156, 0.10);
+}
+
+.term-wrapper {
+  background-color: rgba(26, 188, 156, 0.10);
+}

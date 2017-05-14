@@ -1,4 +1,4 @@
-angular.module('app').controller('SubjectsController', function($mdDialog, $stateParams, Subject) {
+angular.module('app').controller('SubjectsController', function($mdMedia, $mdDialog, $stateParams, Subject) {
     var self = this;
 
     self.termId = $stateParams.termId;
@@ -20,12 +20,21 @@ angular.module('app').controller('SubjectsController', function($mdDialog, $stat
             },
 
             orderChanged: function() {
-                for (var i = 0; i < subject.labs.length; i++) {
+                var labsCount = subject.labs.length;
+                for (var i = 0; i < labsCount; i++) {
                     subject.labs[i].rank = i;
                 }
                 Subject.update({ termId: self.termId }, subject).$promise.finally(refresh);
             }
         }
+    };
+
+    self.isMobilePhone = function (){
+        return $mdMedia('max-width: 960px');
+    };
+
+    self.isEmpty = function () {
+        return (self.subjects.length === 0);
     };
 
     self.deleteSubject = function(subject) {

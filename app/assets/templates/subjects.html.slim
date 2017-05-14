@@ -1,34 +1,40 @@
 div.term-wrapper[layout="row" layout-padding flex layout-align="start start"]
-  md-card.subject-wrapper[ng-repeat="subject in self.subjects"]
-    md-card-header.subject-name
-      md-card-header-text
-        span.md-title
-          | {{subject.name}}
-    md-divider
-    md-card-content.subject-lessons[as-sortable="self.sortOptions(subject)" ng-model="subject.labs"]
-      md-card.lab[
-        class="{{self.labClasses[lab.state]}}"
-        ng-repeat="lab in subject.labs"
-        ng-click="self.editLab(subject, lab)"
-        as-sortable-item
+  div.subject-wrapper[ng-repeat="subject in self.subjects"]
+    md-card.subject-card
+      md-card-header.subject-name
+        md-card-header-text
+          span.md-title
+            | {{subject.name}}
+      md-divider
+      md-card-content.subject-lessons[
+        as-sortable="self.sortOptions(subject)"
+        ng-model="subject.labs"
+        is-disabled="self.isMobilePhone()"
       ]
-        md-card-content[as-sortable-item-handle]
-          p
-            | {{lab.name}}
-    md-divider
-    md-card-actions.subject-actions[layout="row" layout-align="end center"]
-      md-button.md-icon-button[ng-click="self.addLab(subject)"]
-        md-icon
-          i.material-icons add
-      md-button.md-icon-button[ng-click="self.showStatistics(subject)"]
-        md-icon
-          i.material-icons pie_chart
-      md-button.md-icon-button[ng-click="self.editSubject(subject)"]
-        md-icon
-          i.material-icons edit
-      md-button.md-icon-button[ng-click="self.deleteSubject(subject)"]
-        md-icon
-          i.material-icons delete
+        md-card.lab[
+          class="{{self.labClasses[lab.state]}}"
+          ng-repeat="lab in subject.labs"
+          ng-click="self.editLab(subject, lab)"
+          as-sortable-item
+        ]
+          md-card-content[as-sortable-item-handle]
+            p
+              | {{lab.name}}
+      md-divider
+      md-card-actions.subject-actions[layout="row" layout-align="end center"]
+        md-button.md-icon-button[ng-click="self.addLab(subject)"]
+          md-icon
+            i.material-icons add
+        md-button.md-icon-button[ng-click="self.showStatistics(subject)"]
+          md-icon
+            i.material-icons pie_chart
+        md-button.md-icon-button[ng-click="self.editSubject(subject)"]
+          md-icon
+            i.material-icons edit
+        md-button.md-icon-button[ng-click="self.deleteSubject(subject)"]
+          md-icon
+            i.material-icons delete
+  h1.md-display-1[ng-if="self.isEmpty()"] There are no subjects
 md-fab-speed-dial.md-fling[md-direction="up" ng-cloak]
   md-fab-trigger
     md-button.md-fab

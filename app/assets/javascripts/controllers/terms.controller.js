@@ -26,6 +26,10 @@ angular.module('app').controller('TermsController', function($state, $mdDialog, 
         openModal();
     };
 
+    self.isEmpty = function () {
+      return (self.terms.length === 0);
+    };
+
     refresh();
 
     function refresh() {

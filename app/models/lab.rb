@@ -7,5 +7,5 @@ class Lab < ApplicationRecord
   validates :state, presence: true
   validates :rank, presence: true
 
-  scope :ordered_by_rank, -> { order(rank: :asc) }
+  scope :ordered_by_rank, -> { order(rank: :asc, id: :desc) }
 end
