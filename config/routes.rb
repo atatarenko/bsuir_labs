@@ -8,5 +8,7 @@ Rails.application.routes.draw do
         resources :labs
       end
     end
+
+    resource :teachers
   end
 end
