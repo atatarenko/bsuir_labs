@@ -9,6 +9,6 @@ Rails.application.routes.draw do
       end
     end
 
-    resource :teachers
+    resources :teachers
   end
 end
