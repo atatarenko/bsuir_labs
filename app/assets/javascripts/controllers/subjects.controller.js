@@ -1,4 +1,6 @@
-angular.module('app').controller('SubjectsController', function($mdMedia, $mdDialog, $stateParams, Subject) {
+angular
+  .module('app')
+  .controller('SubjectsController', function($mdMedia, $mdDialog, $stateParams, Subject, Teacher) {
     var self = this;
 
     self.termId = $stateParams.termId;
@@ -84,6 +86,7 @@ angular.module('app').controller('SubjectsController', function($mdMedia, $mdDia
     };
 
     function openSubjectModal(subject) {
+      Teacher.query().$promise.then(function(teachers) {
         $mdDialog.show({
             controller: 'SubjectModalController as self',
             templateUrl: 'subject_modal.html',
@@ -91,9 +94,11 @@ angular.module('app').controller('SubjectsController', function($mdMedia, $mdDia
             clickOutsideToClose: true,
             locals: {
                 termId: self.termId,
-                subject: angular.copy(subject)
+                subject: angular.copy(subject),
+                teachers: teachers
             }
         }).finally(refresh);
+      });
     }
 
     function openLabModal(subject, lab) {

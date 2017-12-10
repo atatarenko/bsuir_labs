@@ -1,9 +1,12 @@
-angular.module('app').controller('SubjectModalController', function($mdDialog, Subject, subject, termId) {
+angular
+  .module('app')
+  .controller('SubjectModalController', function($mdDialog, Subject, subject, termId, teachers) {
     var self = this;
 
     self.termId = termId;
     self.subject = subject;
     self.updateMode = !!self.subject;
+    self.teachers = teachers;
 
     if (self.updateMode) {
         self.title = 'Edit Subject';

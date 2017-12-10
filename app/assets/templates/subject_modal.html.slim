@@ -7,6 +7,13 @@ md-dialog.md-dialog-modal[flex-xs="90"]
         md-input-container[flex]
           label Name
           input[ng-model="self.subject.name"]
+        md-input-container[flex]
+          label Teacher
+          md-select ng-model="self.subject.teacher_id"
+            md-option value="null"
+              | None
+            md-option ng-value="teacher.id" ng-repeat="teacher in self.teachers"
+              | {{teacher.name}}
         md-input-container
           label Description
           textarea.description-text[

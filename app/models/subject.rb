@@ -1,7 +1,7 @@
 # frozen_string_literal
 class Subject < ApplicationRecord
   belongs_to :term
-  belongs_to :teacher
+  belongs_to :teacher, optional: true
   has_many :labs, dependent: :destroy
 
   validates :name, presence: true

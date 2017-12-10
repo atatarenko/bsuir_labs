@@ -51,15 +51,16 @@ module Api
     private
 
     def prepare_params
-      params.
-          merge(labs_attributes: params.delete(:labs)).
-          permit(:id, :name, :description, labs_attributes: %i[id rank])
+      params
+        .merge(labs_attributes: params.delete(:labs))
+        .permit(:id, :name, :description, :teacher_id, labs_attributes: %i[id rank])
     end
 
     def subjects
-      Subject.
-          joins(term: [:user]).
-          where(terms: { user_id: current_user.id }, term_id: params[:term_id])
+      Subject
+        .joins(term: [:user])
+        .where(terms: { user_id: current_user.id }, term_id: params[:term_id])
+        .order(:created_at)
     end
   end
 end
