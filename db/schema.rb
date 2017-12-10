@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20170514203132) do
 
-  create_table "labs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "labs", force: :cascade do |t|
     t.string   "name"
     t.integer  "subject_id"
     t.string   "state",                    null: false
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170514203132) do
     t.index ["subject_id"], name: "index_labs_on_subject_id", using: :btree
   end
 
-  create_table "subjects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "subjects", force: :cascade do |t|
     t.string   "name",                     null: false
     t.integer  "term_id"
     t.string   "description", default: "", null: false
@@ -32,7 +35,7 @@ ActiveRecord::Schema.define(version: 20170514203132) do
     t.index ["term_id"], name: "index_subjects_on_term_id", using: :btree
   end
 
-  create_table "terms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "terms", force: :cascade do |t|
     t.integer  "course",      null: false
     t.integer  "term_number", null: false
     t.integer  "user_id"
@@ -42,23 +45,21 @@ ActiveRecord::Schema.define(version: 20170514203132) do
     t.index ["user_id"], name: "index_terms_on_user_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "email",                   default: "", null: false
-    t.string   "encrypted_password",      default: "", null: false
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.integer  "{:foreign_key=>true}_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-    t.index ["{:foreign_key=>true}_id"], name: "index_users_on_{:foreign_key=>true}_id", using: :btree
   end
 
 end
