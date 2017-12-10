@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .controller('SubjectsController', function($mdMedia, $mdDialog, $stateParams, Subject, Teacher) {
+  .controller('SubjectsController', function($mdMedia, $mdDialog, $stateParams, Subject, Teacher, Mark) {
     var self = this;
 
     self.termId = $stateParams.termId;
@@ -102,17 +102,20 @@ angular
     }
 
     function openLabModal(subject, lab) {
+      Mark.query().$promise.then(function(marks) {
         $mdDialog.show({
-            controller: 'LabModalController as self',
-            templateUrl: 'lab_modal.html',
-            parent: angular.element(document.body),
-            clickOutsideToClose: true,
-            locals: {
-                termId: self.termId,
-                subjectId: subject.id,
-                lab: angular.copy(lab)
-            }
+          controller: 'LabModalController as self',
+          templateUrl: 'lab_modal.html',
+          parent: angular.element(document.body),
+          clickOutsideToClose: true,
+          locals: {
+            termId: self.termId,
+            subjectId: subject.id,
+            lab: angular.copy(lab),
+            marks: marks
+          }
         }).finally(refresh);
+      });
     }
 
     function openChartModal(labs) {

@@ -1,4 +1,6 @@
-angular.module('app').controller('LabModalController', function($mdDialog, Lab, lab, subjectId, termId) {
+angular
+  .module('app')
+  .controller('LabModalController', function($mdDialog, Lab, lab, subjectId, termId, marks) {
     var self = this;
 
     self.termId = termId;
@@ -11,6 +13,7 @@ angular.module('app').controller('LabModalController', function($mdDialog, Lab, 
         { name: 'resolved', showText: 'Resolved' },
         { name: 'done', showText: 'Done' }
     ];
+    self.marks = marks;
 
     if (self.updateMode) {
         self.title = 'Lab';
