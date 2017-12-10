@@ -1,0 +1,20 @@
+div[layout="row" layout-align="center"]
+  div[flex="80"]
+    h1.md-display-3 Teachers
+    div[layout="row" layout-wrap]
+      md-card.term-card[ng-repeat="teacher in self.teachers"]
+        md-card-title
+          md-card-title-text
+            span.md-headline
+              | {{teacher.name}}
+        md-card-actions[layout="row" layout-align="end center"]
+          md-button.md-icon-button[ng-click="self.editTeacher(teacher)"]
+            md-icon
+              i.material-icons edit
+          md-button.md-icon-button[ng-click="self.delete(teacher)"]
+            md-icon
+              i.material-icons delete
+      h1.md-display-1[ng-if="self.isEmpty()"] There are no teachers
+
+md-button.md-fab.add-term-button[ng-click="self.addTeacher()"]
+  i.material-icons add

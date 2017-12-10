@@ -7,6 +7,12 @@ angular.module('app').config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'terms.html'
         },
         {
+          name: 'teachers',
+          url: '/teachers',
+          controller: 'TeachersController as self',
+          templateUrl: 'teachers.html'
+        },
+        {
             name: 'subjects',
             url: '/terms/:termId/subjects',
             controller: 'SubjectsController as self',

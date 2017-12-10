@@ -4,6 +4,7 @@ md-toolbar.nav-bar[layout="row" md-whiteframe="2" layout-align="space-around cen
   md-nav-bar[hide show-gt-sm md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" md-no-ink-bar="true"]
     div[ng-if="self.isAuthenticated()"]
       md-nav-item[md-nav-sref="terms" name="terms"] Terms
+      md-nav-item[md-nav-sref="teachers" name="teachers"] Teachers
       md-button[class="sign-out-button" ng-click="self.signOut()"] Sign Out
     div[ng-if="!self.isAuthenticated()"]
       md-nav-item[md-nav-sref="signIn" name="signIn"] Sign In
@@ -17,6 +18,8 @@ md-toolbar.nav-bar[layout="row" md-whiteframe="2" layout-align="space-around cen
       div[ng-if="self.isAuthenticated()"]
         md-menu-item
           md-button[ui-sref="terms"] Terms
+        md-menu-item
+          md-button[ui-sref="teachers"] Teachers
         md-menu-item
           md-button[ng-click="self.signOut()"] Sign Out
       div[ng-if="!self.isAuthenticated()"]
