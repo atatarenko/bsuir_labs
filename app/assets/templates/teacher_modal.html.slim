@@ -1,0 +1,13 @@
+md-dialog.md-dialog-modal[flex-xs="90"]
+  form[ng-cloak]
+    md-dialog-content.md-dialog-content
+      h2.md-title
+        | {{self.title}}
+      div layout="column"
+        div layout-gt-xs="row"
+          md-input-container.md-block[flex-gt-xs]
+            label Name
+            input ng-model="self.teacher.name"
+    md-dialog-actions[layout="row"]
+      md-button ng-click="self.saveTeacher()" Save
+      md-button ng-click="self.cancel()" Cancel

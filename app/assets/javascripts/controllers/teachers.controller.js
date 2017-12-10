@@ -35,12 +35,12 @@ angular.module('app').controller('TeachersController', function($state, $mdDialo
   }
 
   function openModal(term) {
-    // $mdDialog.show({
-    //   controller: 'TermModalController as self',
-    //   templateUrl: 'term_modal.html',
-    //   parent: angular.element(document.body),
-    //   clickOutsideToClose: true,
-    //   locals: { term: angular.copy(term) }
-    // }).finally(refresh);
+    $mdDialog.show({
+      controller: 'TeacherModalController as self',
+      templateUrl: 'teacher_modal.html',
+      parent: angular.element(document.body),
+      clickOutsideToClose: true,
+      locals: { teacher: angular.copy(term) }
+    }).finally(refresh);
   }
 });
