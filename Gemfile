@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bower'
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 5.0'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg'
